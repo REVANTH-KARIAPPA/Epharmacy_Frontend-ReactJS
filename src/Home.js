@@ -150,15 +150,21 @@ function Home(props) {
                           />
                         </div>
                         <h5>
-                          {/* <Link
-                            to={ {pathname:"/product/" + product.id,state:product}}
-                            
-                          >
-                            {product.name}
-                          </Link> */}
-                         <div>
-                           <a onClick={()=>{toProduct(product.id,product.name,product.image,product.price)}}> {product.name}   </a>
-                         </div>
+                          <div>
+                            <a
+                              onClick={() => {
+                                toProduct(
+                                  product.id,
+                                  product.name,
+                                  product.image,
+                                  product.price
+                                );
+                              }}
+                            >
+                              {" "}
+                              {product.name}{" "}
+                            </a>
+                          </div>
                         </h5>
                         <h5>
                           <a
@@ -178,6 +184,9 @@ function Home(props) {
 
                     <div className="clearfix"> </div>
                   </div>
+                  <Link className="addp" to="/addProduct">
+                    Add Product
+                  </Link>
                 </div>
               </div>
             </div>

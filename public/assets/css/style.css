@@ -4992,3 +4992,11 @@ td.invert-image a img {
 		margin-bottom: 1em;
 	}
 }
+.sbmincart-subtotale{
+	align-items: left;
+	text-align: left;
+
+}
+.sbmincart-subtotale > label{
+	font-weight: bold;
+}

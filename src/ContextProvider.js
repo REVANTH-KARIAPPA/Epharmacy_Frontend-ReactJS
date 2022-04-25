@@ -15,6 +15,7 @@ export const reducer = (state, action) => {
       return { cartItems: [...action.data] };
       break;
     case "delete_cart":
+       
       break;
     default:
       return state;

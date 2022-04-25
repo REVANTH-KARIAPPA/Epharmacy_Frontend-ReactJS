@@ -1,12 +1,13 @@
 import "./App.css";
-import Home from "./Home";
+import Home from "./Home"
 
 import Footer from "./Footer";
 import Product from "./Product";
 import CheckoutCart from "./CheckoutCart";
 import Header from "./Header";
-import { ContextProvider, cartState, reducer } from "./ContextProvider";
+import {ContextProvider,cartState,reducer,} from "./ContextProvider";
 import { Routes, Switch, Route, Link } from "react-router-dom";
+import AddProduct from "./AddProduct";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Header></Header>
         <Routes>
           <Route path="/product/:id" element={<Product /> } ></Route>
+          <Route path="/addProduct" element={<AddProduct/>}></Route>
           <Route path="/checkoutcart" element={<CheckoutCart />}></Route>
           <Route path="/" element={<Home />}></Route>
         </Routes>

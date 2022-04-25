@@ -1,6 +1,12 @@
 import "./App.css";
+import { Link, useNavigate } from "react-router-dom";
+
 
 function Footer() {
+   const navigate = useNavigate();
+  const addProduct = () => {
+    navigate("/addProduct");
+  };
   return (
     <div className="footer">
       <div className="container">
@@ -32,26 +38,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col-md-3 w3_footer_grid">
-            <h3>Information</h3>
-            <ul className="info">
-              <li>
-                <a href="about.html">About Us</a>
-              </li>
-              <li>
-                <a href="mail.html">Contact Us</a>
-              </li>
-              <li>
-                <a href="codes.html">Short Codes</a>
-              </li>
-              <li>
-                <a href="faq.html">FAQ's</a>
-              </li>
-              <li>
-                <a href="products.html">Special Products</a>
-              </li>
-            </ul>
-          </div>
+
           <div className="col-md-3 w3_footer_grid">
             <h3>Category</h3>
             <ul className="info">
@@ -117,6 +104,9 @@ function Footer() {
           <div className="clearfix"> </div>
         </div>
       </div>
+     
+       
+   
       <div className="footer-copy">
         <div className="footer-copy1">
           <div className="footer-copy-pos">

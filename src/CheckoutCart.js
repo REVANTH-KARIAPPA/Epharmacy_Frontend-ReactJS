@@ -4,6 +4,8 @@ import { httpPostwithToken } from "./HttpConfig";
 import { useNavigate } from "react-router-dom";
 export default function CheckoutCart() {
   const [cartData, dispatch] = CartContextValue();
+  const [paytype,setPaytype ]=useState("");
+  const [address,setAddress]=useState("");
   const [optionData, setOptionData] = useState([
     "1",
     "2",
@@ -23,9 +25,9 @@ export default function CheckoutCart() {
       0
     );
   };
-   const getSubTotal = () => {
-     return cartData.cartItems.map((obj)=>(obj.price));
-   };
+  const getSubTotal = () => {
+    return cartData.cartItems.map((obj) => obj.price);
+  };
   const qty_change = (cartObj, e) => {
     // console.log(cartObj,e.target.value);
     // cartObj.qty
@@ -54,12 +56,12 @@ export default function CheckoutCart() {
     // console.log(cartObj,e.target.value);
     // cartObj.qty
     let totalAmount = getTotalAmount();
-    
-     var obj = {
-       total_price: totalAmount, // geting total form here
-       pay_type: "COD",
-       deliveryAddress: "Delivery address",
-     };
+
+    var obj = {
+      total_price: totalAmount, // geting total form here
+      pay_type: paytype,
+      deliveryAddress: address,
+    };
     httpPostwithToken("order/checkout_order", obj)
       .then((res) => {
         res.json().then((data) => {
@@ -81,7 +83,7 @@ export default function CheckoutCart() {
       <div className="container">
         <div>
           <h1>Checkout Cart</h1>
-
+              
           <div
             style={{ display: "block" }}
             id="w3lssbmincart"
@@ -124,15 +126,33 @@ export default function CheckoutCart() {
             </ul>
             <div className="sbmincart-footer">
               <div className="sbmincart-subtotal radio-wrap">
-                <input name="pay_type" type="radio" />
+                <input
+                  name="pay_type"
+                  type="radio"
+                  value="online"
+                  onChange={(e) => setPaytype(e.target.value)}
+                />
                 <span>Online</span>
-                <input type="radio" name="pay_type" />
+                <input
+                  type="radio"
+                  name="pay_type"
+                  value="COD"
+                  onChange={(e) => setPaytype(e.target.value)}
+                />
                 <span>Cash on Delivery</span>
+              </div>
+              <div className="sbmincart-subtotale">
+                <label> Address </label>
+                <br></br>
+                <textarea
+                  type="text"
+                  onChange={(e) => setAddress(e.target.value)}
+                />
               </div>
               <div className="sbmincart-subtotal">
                 Total : {getTotalAmount()}
                 <div>
-                  <br/>
+                  <br />
                   <button onClick={() => checkout_order()}>Place Order</button>
                 </div>
               </div>

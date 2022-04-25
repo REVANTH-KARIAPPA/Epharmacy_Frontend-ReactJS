@@ -69,9 +69,9 @@ export default function Product(props) {
               <i class="item_price">₹ {location.state.price}</i>
             </p>
 
-            <button type="submit" class="w3ls-cart">
-              Add to cart
-            </button>
+            
+              
+            
           </div>
         </div>
       </div>

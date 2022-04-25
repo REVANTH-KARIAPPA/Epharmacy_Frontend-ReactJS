@@ -9,6 +9,7 @@ export default function Header() {
   const [password, setPassword] = useState("");
   const [respassword, setRePassword] = useState("");
   const [email, setEmail] = useState("");
+  const [type,setType]=useState("user");
   const [showCartPopup, setShowCartPopup] = useState(false);
   const [name, setName] = useState("");
   const [sign_in_up_model, setsignin_up_model] = useState("");
@@ -38,6 +39,7 @@ export default function Header() {
       mobile: mobile,
       password: password,
       email: email,
+      type:type,
     };
 
     httpPost("signup/user", jsonOBj)
@@ -51,6 +53,7 @@ export default function Header() {
             setRePassword("");
             setEmail("");
             setName("");
+            
             setsignin_up_model("sign-in"); //hide the sign up model.
           } else {
             alert(res["message"]);
@@ -134,10 +137,7 @@ export default function Header() {
           </div>
           <div className="search">
             <input className="search_box" type="checkbox" id="search_box" />
-            <label
-              onClick={() => alert("Logged out")}
-              className="icon-search"
-            >
+            <label onClick={() => alert("Logged out")} className="icon-search">
               <button type="button">Logout</button>
             </label>
           </div>
@@ -175,7 +175,6 @@ export default function Header() {
                 <ul className="sbmincart-attributes"></ul>
               </div>
               <div className="sbmincart-details-quantity">
-                {/* <input data-sbmincart-idx="0" name="quantity_1" type="text" pattern="[0-9]*" value="1" autocomplete="off"/>        */}
                 <span className="sbmincart-quantity">{cartObj.qty}</span>
               </div>
               <div className="sbmincart-details-remove">
@@ -299,6 +298,18 @@ export default function Header() {
                                 type="text"
                                 required=""
                               />
+                              <br />
+                              <br />
+                              <select
+                                onChange={(e) => setType(e.target.value)}
+                                placeholder="Type"
+                                name="type"
+                                type="text"
+                                required=""
+                              >
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                              </select>
                               <input
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Enter Password"
